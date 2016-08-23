@@ -1,0 +1,88 @@
+*{
+  box-sizing : border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,body{
+  width:100%;
+  min-height:100%; margin:0; padding:0; color:#ddd; font-size:14px; font-family:Verdana, Geneva, sans-serif;background-color:#333;
+  text-align: center;
+}
+
+@mixin x-image() {
+  background: url('images/x.png');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+@mixin o-image() {
+  background: url('images/o.png');
+  background-size: 90%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.alert{
+  font-size: 20px;
+}
+
+#alignContent{
+  display : -webkit-flex;
+  display : -ms-flexbox;
+  display : flex;
+  width:100%;
+  flex-wrap:wrap; height: 100%;
+}
+
+.board-form {
+  margin: auto;
+}
+
+.main-container {
+  margin: 20px auto 0 auto;
+  background: white;
+  cursor: pointer;
+
+  button {
+    width:  80px;
+    height: 50px;
+  }
+
+  .item{
+    height:auto;
+    margin:0;
+    background: white;
+    color: #333333;
+    border: 1px solid black;
+    display : inherit;
+    width:100px;
+    -webkit-align-items: center;
+    -ms-flex-align:center;
+    align-items: center;
+
+    &.shape-o{
+      @include o-image();
+    }
+
+    &.shape-x {
+      @include x-image();
+    }
+
+    &.shine {
+      background: yellow;
+    }
+  }
+
+  &.turn-o .item:not(.shape-o):not(.shape-x):hover{
+    opacity: 0.3;
+    @include o-image();
+  }
+
+  &.turn-x .item:not(.shape-x):not(.shape-o):hover{
+    opacity: 0.3;
+    @include x-image();
+  }
+}
+
